@@ -1,0 +1,7 @@
+kubectl api-resources
+
+#This gives which component uses what API version
+kubectl api-versions
+
+#Another way is see what object type supports whet version
+kubectl explain pod
