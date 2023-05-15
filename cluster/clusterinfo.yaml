@@ -24,4 +24,10 @@ kubectl describe node <nodeName>
 Get Cluster Configuration Details:
 kubectl config view
 
+To delete a running node:
+kubectl drain node2
+kubectl drain node2 --ignore-daemonsets --delete-local-data
+kubectl delete node node2
 
+To delete a failed node or if the VM is deleted:
+kubectl delete node node2
