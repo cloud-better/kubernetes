@@ -1,0 +1,27 @@
+Get the Kubernetes Cluster Information:
+kubectl cluster-info
+
+Dumping Kubernetes Cluster on Screen or to a file:
+kubectl cluster-info dump
+kubectl cluster-info dump --output-directory /tmp/clusterdump/
+
+What dump do we get with the above command:
+root@master1:~# ls /tmp/clusterdump/
+default  kube-system  nodes.json
+
+Viewing Nodes in the cluster:
+kubectl get nodes
+
+What Resources or Objects can the Kubernetes API Server can create:
+kubectl api-resources
+
+Kubernetes Cluster Components Status:
+kubectl get componentstatus
+
+Describe a Kubernetes Worker Node:
+kubectl describe node <nodeName>
+
+Get Cluster Configuration Details:
+kubectl config view
+
+
