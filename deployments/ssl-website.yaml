@@ -1,0 +1,26 @@
+# An SSL Enabled HTML Website
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: deployment-ssl-website
+  labels: null
+spec:
+  replicas: 1
+  strategy: null
+  selector:
+    matchLabels:
+      app: ssl-website
+  template:
+    metadata:
+      labels:
+        app: ssl-website
+        env: dev
+    spec:
+      containers:
+        - name: container-ssl-website
+          image: tanvisinghny/ssl-website
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+
