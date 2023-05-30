@@ -1,0 +1,13 @@
+# POD Restart Policy set to Always
+# kind: Pod
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+spec:
+  restartPolicy: OnFailure
+  containers:
+    - name: example-container
+      image: nginx
