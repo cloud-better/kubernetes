@@ -1,0 +1,30 @@
+# Configuring Readiness Probe
+# Create a file exec-startup.yaml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: startup
+  name: startup-exec
+spec:
+  containers:
+    - name: startup
+      image: registry.k8s.io/busybox
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+      livenessProbe:
+        httpGet:
+          path: /index.html
+          port: 80
+        failureThreshold: 1
+        periodSeconds: 10
+      startupProbe:
+        httpGet:
+          path: /index.html
+          port: 80
+        failureThreshold: 30
+        periodSeconds: 10
