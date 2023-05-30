@@ -1,8 +1,0 @@
-# Query the state of API objects in Kubernetes (for example: Pods, Namespaces, ConfigMaps, and Events).
-kubectl api-resources
-
-# This gives which component uses what API version.
-kubectl api-versions
-
-# Another way is to see what object type supports whet version.
-kubectl explain pod
