@@ -1,0 +1,32 @@
+# Configuring Readiness Probe
+# Create a file exec-readiness.yaml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: readiness
+  name: readiness-exec
+spec:
+  containers:
+    - name: readiness
+      image: registry.k8s.io/busybox
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 200
+        periodSeconds: 5
+      readinessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 100
+        periodSeconds: 5
