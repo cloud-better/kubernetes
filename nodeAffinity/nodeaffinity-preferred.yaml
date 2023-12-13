@@ -24,9 +24,10 @@ spec:
             - containerPort: 443
       affinity:
         nodeAffinity:
-          prefferedDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
               - key: app
                 operator: In
                 values:
