@@ -1,0 +1,17 @@
+kubectl taint nodes node1 test-environment=true:NoSchedule
+
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: nginx
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+
+  tolerations:
+  - key: "test-environment"
+    operator: "Exists"
+    effect: "NoSchedule"
